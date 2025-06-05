@@ -1,0 +1,6 @@
+{
+    "/expense/tracker": {
+        "target": "http:localhost:8081",
+        "secure": false
+    }
+}
