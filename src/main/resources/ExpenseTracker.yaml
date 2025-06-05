@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: Expense Tracker Application APIs
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/expense/tracker
+paths:
+  /login:
+    post:
+      operationId: getUser
+      summary: Get User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        '200':
+          description: Get User Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /register:
+    post:
+      operationId: createUser
+      summary: Create User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        '200':
+          description: Create User Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    LoginRequest:
+      properties:
+        confirmPassword:
+          type: string
+        email:
+          type: string
+        fullName:
+          type: string
+        password:
+          type: string
+        terms:
+          type: boolean
+    LoginResponse:
+      properties:
+        data:
+          type: object
+          properties:
+            token:
+              type: string
+            status:
+              type: string
+            message:
+              type: string
+    ErrorResponse:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
