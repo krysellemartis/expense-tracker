@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NbLayoutModule, NbThemeModule } from '@nebular/theme';
+import { NbLayoutModule, NbThemeModule, NbUserModule } from '@nebular/theme';
 import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbAuthJWTToken } from '@nebular/auth';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,13 +29,17 @@ import { HeaderComponent } from './header/header.component';
               register: {
                 endpoint: '/register',
                 method: 'post'
-              }
+              },
+              token: {
+               class: NbAuthJWTToken,
+             }
            }),
          ],
          forms: {},
        }),
     AppRoutingModule,
-    NbLayoutModule
+    NbLayoutModule,
+    NbUserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
